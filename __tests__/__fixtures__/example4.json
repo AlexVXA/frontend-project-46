@@ -6,5 +6,12 @@
     "cylinders": 6,
     "size": 3.2
   },
-  "supercharged": true
+  "supercharged": true,
+  "owner": {
+    "name": "Mike",
+    "adress": {
+      "country": "USA",
+      "city": "L.A. / Beverlie Hills"
+    }
+  }
 }
