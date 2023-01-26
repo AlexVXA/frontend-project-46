@@ -3,15 +3,15 @@ import path from 'path';
 
 const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 
-const path1 = getAbsPath('__tests__/__fixtures__/example1.json');
-const path2 = getAbsPath('__tests__/__fixtures__/example2.json');
+const path1 = getAbsPath('__tests__/__fixtures__/example3.json');
+const path2 = getAbsPath('__tests__/__fixtures__/example4.json');
 
 const data1 = JSON.parse(readFileSync(path1, 'utf8'));
 const data2 = JSON.parse(readFileSync(path2, 'utf8'));
 
 const isObj = (val) => typeof val === 'object' && !Array.isArray(val) && val !== null;
 
-const hasKey = (obj, key) => !!Object.keys(obj).filter((current) => key === current).length;
+const hasKey = (obj, key) => !!Object.keys(obj).filter((temp) => key === temp).length;
 
 const diff = (obj1, obj2) => {
   const keys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)]));
@@ -21,7 +21,7 @@ const diff = (obj1, obj2) => {
     if (isObj(key) && obj1HasKey && obj2HasKey) {
       return { key, status: 'nested', children: diff(obj1[key], obj2[key]) };
     }
-    if (obj1HasKey && obj2HasKey) {
+    if (obj1[key] === obj2[key]) {
       return { key, status: 'unmodified', value: obj1[key] };
     }
     if (!obj1HasKey && obj2HasKey) {
