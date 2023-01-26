@@ -14,7 +14,7 @@ const isObj = (val) => typeof val === 'object' && !Array.isArray(val) && val !==
 const hasKey = (obj, key) => !!Object.keys(obj).filter((temp) => key === temp).length;
 
 const diff = (obj1, obj2) => {
-  const keys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)]));
+  const keys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)])).sort();
   const result = keys.map((key) => {
     const obj1HasKey = hasKey(obj1, key);
     const obj2HasKey = hasKey(obj2, key);
@@ -37,7 +37,35 @@ const diff = (obj1, obj2) => {
       current: obj2[key],
     };
   });
-  return result;
+  return result.flat(Infinity);
 };
 
-diff(data1, data2);
+const dif = diff(data1, data2);
+
+const genDiff = (arr) => {
+  const str = arr.reduce((acc, prop) => {
+    const { key, status, value, previous, current } = prop;
+    switch (status) {
+      case 'removed':
+        acc += `\n- ${key}: ${value}`;
+        break;
+      case 'added':
+        acc += `\n+ ${key}: ${value}`;
+        break;
+      case 'updated':
+        acc += `\n- ${key}: ${previous}\n+ ${key}: ${current}`;
+        break;
+      case 'unmodified':
+        acc += `\n+ ${key}: ${value}`;
+        break;
+      case 'nested':
+        return genDiff(prop);
+      default:
+        acc += `\n  ${key}: ${value}`;
+    }
+    return acc;
+  }, '');
+  return `{${str}\n}`;
+};
+
+genDiff(dif);
