@@ -18,7 +18,7 @@ const diff = (obj1, obj2) => {
   const result = keys.map((key) => {
     const obj1HasKey = hasKey(obj1, key);
     const obj2HasKey = hasKey(obj2, key);
-    if (isObj(key) && obj1HasKey && obj2HasKey) {
+    if (isObj(obj1[key]) && isObj(obj2[key])) {
       return { key, status: 'nested', children: diff(obj1[key], obj2[key]) };
     }
     if (obj1[key] === obj2[key]) {
