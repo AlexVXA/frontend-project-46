@@ -37,22 +37,22 @@ const genDiff = (arr) => {
     const { key, status, value, previous, current } = prop;
     switch (status) {
       case 'removed':
-        acc += `\n- ${key}: ${value}`;
+        acc += `\n  - ${key}: ${value}`;
         break;
       case 'added':
-        acc += `\n+ ${key}: ${value}`;
+        acc += `\n  + ${key}: ${value}`;
         break;
       case 'updated':
-        acc += `\n- ${key}: ${previous}\n+ ${key}: ${current}`;
+        acc += `\n  - ${key}: ${previous}\n  + ${key}: ${current}`;
         break;
       case 'unmodified':
-        acc += `\n  ${key}: ${value}`;
+        acc += `\n    ${key}: ${value}`;
         break;
       case 'nested':
         acc += `${genDiff(prop.children)}`;
         break;
       default:
-        acc += `\n  ${key}: ${value}`;
+        acc += `\n   ${key}: ${value}`;
         break;
     }
     return acc;
