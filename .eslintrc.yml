@@ -6,4 +6,10 @@ overrides: []
 parserOptions:
   ecmaVersion: latest
   sourceType: module
-rules: { implicit-arrow-linebreak: 0 }
+rules:
+  {
+    implicit-arrow-linebreak: 0,
+    no-underscore-dangle: 0,
+    import/extensions: 0,
+    import/no-extraneous-dependencies: 0,
+  }
