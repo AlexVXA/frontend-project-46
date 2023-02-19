@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { readFileSync } from 'fs';
 import path from 'path';
+import yaml from 'js-yaml';
 
 const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 const isObj = (val) => typeof val === 'object' && !Array.isArray(val) && val !== null;
@@ -62,11 +63,25 @@ const genDiff = (arr) => {
   return `{${str}\n}`;
 };
 
+const parse = (filepath) => {
+  const extname = path.extname(filepath);
+  switch (extname) {
+    case '.json':
+      return JSON.parse(readFileSync(filepath, 'utf8'));
+    case '.yml':
+      return yaml.load(readFileSync(filepath, 'utf8'));
+    case '.yaml':
+      return yaml.load(readFileSync(filepath, 'utf8'));
+    default:
+      throw new Error('Sorry, this format do not support!');
+  }
+};
+
 export default (filePath1, filePath2) => {
   const path1 = getAbsPath(filePath1);
   const path2 = getAbsPath(filePath2);
-  const data1 = JSON.parse(readFileSync(path1, 'utf8'));
-  const data2 = JSON.parse(readFileSync(path2, 'utf8'));
+  const data1 = parse(path1);
+  const data2 = parse(path2);
   const diffTree = buildDiffTree(data1, data2);
   return genDiff(diffTree);
 };
