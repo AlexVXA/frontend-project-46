@@ -12,3 +12,8 @@ test('stylish flat JSON', () => {
   const actual = genDiff(fixturePath('example1.json'), fixturePath('example2.json'));
   expect(actual).toBe(expected);
 });
+test('stulish flat YAML', () => {
+  const expected = getFixture('stylish_flat.txt').trim();
+  const actual = genDiff(fixturePath('example5.yml'), fixturePath('example6.yml'));
+  expect(actual).toBe(expected);
+});
