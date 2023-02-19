@@ -12,4 +12,5 @@ rules:
     no-underscore-dangle: 0,
     import/extensions: 0,
     import/no-extraneous-dependencies: 0,
+    no-console: 0,
   }

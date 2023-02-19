@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { readFileSync } from 'fs';
 import path from 'path';
 
@@ -34,6 +35,7 @@ const buildDiffTree = (obj1, obj2) => {
 
 const genDiff = (arr) => {
   const str = arr.reduce((acc, prop) => {
+    // eslint-disable-next-line object-curly-newline
     const { key, status, value, previous, current } = prop;
     switch (status) {
       case 'removed':
