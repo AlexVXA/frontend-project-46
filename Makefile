@@ -13,7 +13,7 @@ manual-test:
 test:
 	npx jest
 
-coverage:
+test-coverage:
 	npx jest --coverage --coverageProvider=v8
 
 .PHONY: test
