@@ -2,7 +2,7 @@ import { test, expect } from '@jest/globals';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import genDiff from '../src/comparer.js';
+import genDiff from '../src/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturePath = (filename) => join(__dirname, '..', '__tests__', '__fixtures__', filename);
