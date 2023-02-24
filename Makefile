@@ -8,7 +8,7 @@ lint:
 	npx eslint .
 
 manual-test:
-	gendiff __tests__/__fixtures__/example1.json __tests__/__fixtures__/example2.json
+	gendiff __tests__/__fixtures__/example7.json __tests__/__fixtures__/example8.json
 	
 test:
 	npx jest
