@@ -12,7 +12,7 @@ test('stylish flat JSON', () => {
   const actual = genDiff(fixturePath('example1.json'), fixturePath('example2.json'));
   expect(actual).toBe(expected);
 });
-test('stulish flat YAML', () => {
+test('stylish flat YAML', () => {
   const expected = getFixture('stylish_flat.txt').trim();
   const actual = genDiff(fixturePath('example5.yml'), fixturePath('example6.yml'));
   expect(actual).toBe(expected);
@@ -25,5 +25,10 @@ test('stylish recursive JSON', () => {
 test('stylish recursive YML', () => {
   const expected = getFixture('stylish_recursive.txt').trim();
   const actual = genDiff(fixturePath('example9.yml'), fixturePath('example10.yml'));
+  expect(actual).toBe(expected);
+});
+test('stylish recursive mixed', () => {
+  const expected = getFixture('stylish_recursive.txt').trim();
+  const actual = genDiff(fixturePath('example7.json'), fixturePath('example10.yml'));
   expect(actual).toBe(expected);
 });
