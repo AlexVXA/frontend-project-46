@@ -1,4 +1,5 @@
-const isObj = (val) => typeof val === 'object' && !Array.isArray(val) && val !== null;
+import isObj from './isObj.js';
+
 const hasKey = (obj, key) => !!Object.keys(obj).filter((temp) => key === temp).length;
 
 const buildDiffTree = (obj1, obj2) => {

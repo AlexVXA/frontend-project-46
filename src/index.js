@@ -1,7 +1,7 @@
 import path from 'path';
-import parse from './parser';
-import buildDiffTree from './buildDiffTree';
-import stylish from './formatters/stylish';
+import parse from './parser.js';
+import buildDiffTree from './buildDiffTree.js';
+import stylish from './formatters/stylish.js';
 
 const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 
