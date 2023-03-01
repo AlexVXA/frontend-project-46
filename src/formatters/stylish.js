@@ -1,7 +1,5 @@
 import isObj from '../isObj.js';
 
-/* eslint-disable object-curly-newline */
-
 const getSpaces = (depth) => '    '.repeat(depth);
 
 const marks = {
