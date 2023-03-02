@@ -49,3 +49,8 @@ test('plain recursive mixed', () => {
   const actual = genDiff(fixturePath('example7.json'), fixturePath('example10.yml'), 'plain');
   expect(actual).toBe(expected);
 });
+test('JSON recursive mixed', () => {
+  const expected = getFixture('JSON.txt').trim();
+  const actual = genDiff(fixturePath('example7.json'), fixturePath('example10.yml'), 'json');
+  expect(actual).toBe(expected);
+});
