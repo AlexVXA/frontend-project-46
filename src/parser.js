@@ -8,7 +8,6 @@ const parse = (filepath) => {
     case '.json':
       return JSON.parse(readFileSync(filepath, 'utf8'));
     case '.yml':
-      return yaml.load(readFileSync(filepath, 'utf8'));
     case '.yaml':
       return yaml.load(readFileSync(filepath, 'utf8'));
     default:
