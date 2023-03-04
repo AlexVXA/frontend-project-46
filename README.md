@@ -21,7 +21,7 @@ Before using genDiff, users must have the following installed:
 
 ## Installation
 
-Clone this repository to your computer using '**git clone <ssh/url>**'. Open a 'frontend-project-46' directory, then throw '**make install**' and '**npm link**' in your console.
+Clone this repository to your computer using '**git clone <ssh/url>**'. Open a 'frontend-project-46' directory, then throw '**make install**' (may need '**sudo**' option if you using WSL) and '**npm link**' in your console.
 
 ## Usage
 
