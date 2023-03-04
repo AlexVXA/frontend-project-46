@@ -5,7 +5,7 @@ import toFormat from './toFormat.js';
 
 const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 
-export default (filePath1, filePath2, format) => {
+export default (filePath1, filePath2, format = 'stylish') => {
   const path1 = getAbsPath(filePath1);
   const path2 = getAbsPath(filePath2);
   const data1 = parse(path1);
