@@ -14,7 +14,7 @@ plain-test:
 	gendiff __tests__/__fixtures__/example7.json __tests__/__fixtures__/example8.json -f plain
 
 json-test:
-	gendiff __tests__/__fixtures__/example7.json __tests__/__fixtures__/example8.json -f JSON
+	gendiff __tests__/__fixtures__/example9.yml __tests__/__fixtures__/example10.yml -f JSON
 	
 test:
 	npx jest

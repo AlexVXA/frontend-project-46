@@ -11,5 +11,5 @@ export default (filePath1, filePath2, format) => {
   const data1 = parse(path1);
   const data2 = parse(path2);
   const diffTree = buildDiffTree(data1, data2);
-  return toFormat(format, diffTree);
+  return toFormat(diffTree, format);
 };
