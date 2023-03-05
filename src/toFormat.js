@@ -1,7 +1,7 @@
 import stylish from './formatters/stylish.js';
 import plain from './formatters/plain.js';
 
-export default (format, diffTree) => {
+export default (diffTree, format) => {
   switch (format) {
     case 'stylish':
       return stylish(diffTree);
