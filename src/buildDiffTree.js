@@ -1,9 +1,10 @@
+import _ from 'lodash';
 import isObj from './isObj.js';
 
 const hasKey = (obj, key) => !!Object.keys(obj).filter((temp) => key === temp).length;
 
 const buildDiffTree = (obj1, obj2) => {
-  const keys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)])).sort();
+  const keys = _.sortBy(_.uniq([...Object.keys(obj1), ...Object.keys(obj2)]));
   const result = keys.map((key) => {
     const obj1HasKey = hasKey(obj1, key);
     const obj2HasKey = hasKey(obj2, key);
