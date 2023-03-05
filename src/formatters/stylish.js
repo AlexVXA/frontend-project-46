@@ -32,27 +32,22 @@ const stylish = (diffTree) => {
       const stringStarter = `${indent}${marks[status]}${key}`;
       switch (status) {
         case 'removed':
-          acc.push(`${stringStarter}: ${stringify(value, depth + 1)}`);
-          break;
+          return [...acc, `${stringStarter}: ${stringify(value, depth + 1)}`];
         case 'added':
-          acc.push(`${stringStarter}: ${stringify(value, depth + 1)}`);
-          break;
+          return [...acc, `${stringStarter}: ${stringify(value, depth + 1)}`];
         case 'updated':
-          acc.push(
+          return [
+            ...acc,
             `${indent}${marks.removed}${key}: ${stringify(previous, depth + 1)}\n${indent}${
               marks.added
             }${key}: ${stringify(current, depth + 1)}`,
-          );
-          break;
+          ];
         case 'nested':
-          acc.push(`${stringStarter}: ${iter(children, depth + 1)}`);
-          break;
+          return [...acc, `${stringStarter}: ${iter(children, depth + 1)}`];
         case 'unmodified':
         default:
-          acc.push(`${stringStarter}: ${stringify(value, depth + 1)}`);
-          break;
+          return [...acc, `${stringStarter}: ${stringify(value, depth + 1)}`];
       }
-      return acc;
     }, []);
     return [marks.openBracket, ...strings, marks.closeBracket(depth)].join('\n');
   };
