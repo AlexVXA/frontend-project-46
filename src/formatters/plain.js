@@ -13,7 +13,9 @@ const stringify = (node) => {
 const plain = (diffTree) => {
   const iter = (node, path = '') => {
     const strings = node.reduce((acc, prop) => {
-      const { key, status, value, previous, current, children } = prop;
+      const {
+        key, status, value, previous, current, children,
+      } = prop;
       const currentPath = [path, key].join('.');
       switch (status) {
         case 'removed':

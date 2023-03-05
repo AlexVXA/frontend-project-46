@@ -28,7 +28,9 @@ const stylish = (diffTree) => {
   const iter = (node, depth) => {
     const indent = getSpaces(depth).slice(2);
     const strings = node.reduce((acc, prop) => {
-      const { key, status, value, previous, current, children } = prop;
+      const {
+        key, status, value, previous, current, children,
+      } = prop;
       const stringStarter = `${indent}${marks[status]}${key}`;
       switch (status) {
         case 'removed':
