@@ -1,27 +1,27 @@
-import isObj from '../isObj.js';
+import _ from 'lodash';
 
 const getSpaces = (depth) => '    '.repeat(depth);
 
 const marks = {
   openBracket: '{',
-  closeBracket(depth) {
-    return `${getSpaces(depth - 1)}}`;
-  },
+  closeBracket: '}',
   removed: '- ',
   added: '+ ',
   unmodified: '  ',
   nested: '  ',
 };
 
+const getCloseBracket = (depth) => `${getSpaces(depth - 1)}${marks.closeBracket}`;
+
 const stringify = (node, depth = 1) => {
   const indent = getSpaces(depth);
-  if (!isObj(node)) {
+  if (!_.isPlainObject(node)) {
     return `${node}`;
   }
   const strings = Object.entries(node).map(
     ([key, val]) => `${indent}${key}: ${stringify(val, depth + 1)}`,
   );
-  return [marks.openBracket, ...strings, marks.closeBracket(depth)].join('\n');
+  return [marks.openBracket, ...strings, getCloseBracket(depth)].join('\n');
 };
 
 const stylish = (diffTree) => {
@@ -46,12 +46,11 @@ const stylish = (diffTree) => {
           ];
         case 'nested':
           return [...acc, `${stringStarter}: ${iter(children, depth + 1)}`];
-        case 'unmodified':
         default:
           return [...acc, `${stringStarter}: ${stringify(value, depth + 1)}`];
       }
     }, []);
-    return [marks.openBracket, ...strings, marks.closeBracket(depth)].join('\n');
+    return [marks.openBracket, ...strings, getCloseBracket(depth)].join('\n');
   };
   return iter(diffTree, 1);
 };

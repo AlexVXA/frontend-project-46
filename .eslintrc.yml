@@ -1,5 +1,5 @@
 env:
-  browser: true
+  node: true
   es2021: true
 extends: airbnb-base
 overrides: []
@@ -8,7 +8,6 @@ parserOptions:
   sourceType: module
 rules:
   {
-    implicit-arrow-linebreak: 0,
     no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }],
     import/extensions: 0,
     import/no-extraneous-dependencies: 0,

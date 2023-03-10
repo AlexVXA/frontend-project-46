@@ -1,10 +1,10 @@
-import isObj from '../isObj.js';
+import _ from 'lodash';
 
 const stringify = (node) => {
   if (typeof node === 'string') {
     return `'${node}'`;
   }
-  if (isObj(node)) {
+  if (_.isPlainObject(node)) {
     return '[complex value]';
   }
   return node;
@@ -34,7 +34,6 @@ const plain = (diffTree) => {
           ];
         case 'nested':
           return [...acc, iter(children, currentPath)];
-        case 'unmodified':
         default:
           return acc;
       }
